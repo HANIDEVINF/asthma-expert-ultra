@@ -2,13 +2,13 @@
 
 [![CERIST Research](https://img.shields.io/badge/Research-CERIST%20Algeria-blue.svg)](https://www.cerist.dz)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-EE4C2C.svg?logo=pytorch&logoColor=white)](https://pytorch.org/)
-[![Android PyTorch Lite](https://img.shields.io/badge/Research-Synthetic%20Time-Series-blue.svg?logo=android&logoColor=white)](https://pytorch.org/mobile/home/)
+[![Data Scope](https://img.shields.io/badge/Data-Synthetic%20Only-blue.svg)]()
 [![Status](https://img.shields.io/badge/Status-Simulation-Based%20Prototype-blue.svg)]()
-[![Code Protection](https://img.shields.io/badge/Code%20Policy-Intellectual%20Property%20Protected-orange.svg)]()
+[![Research Sharing](https://img.shields.io/badge/Sharing-Confirm%20Permissions-orange.svg)]()
 
 > **Research Center in Scientific and Technical Information (CERIST)**  
-> **Author:** Hani Ghena (M.Sc. AI Candidate @ USTHB · CERIST AI Researcher)  
-> **Key Contributions:** Multimodal physiological signal processing, 4-layer Transformer Encoder with multi-task prediction heads, class-weighted Focal Loss, Dempster–Shafer spirometric safety fusion, and sub-second PyTorch Lite on-device Android deployment.
+> **Author:** Hani Ghena (M.Sc. AI Candidate @ USTHB · CERIST research internship project)  
+> **Project scope:** multivariate synthetic time-series generation, a 4-layer Transformer design, multi-task classification, class-weighted Focal Loss and an exploratory spirometric decision-fusion concept. The public repository does not contain a standalone Android app/model artifact or device-level latency evidence.
 
 > **Scope and reproducibility:** this is a simulation-based research prototype, not a clinically validated medical device. All cohort results are based on generated synthetic data; no real patient cohort is evaluated. The public repository does not contain a packaged Android app or a standalone exported PyTorch Lite artifact. The live portfolio lab uses deterministic illustrative formulas rather than loading this trained model. Before publishing additional research code, weights or reports, confirm the relevant CERIST sharing permissions.
 
