@@ -1,25 +1,27 @@
-# AsthmaExpertUltra: A Transformer-Based Multi-Task Learning System for Real-Time Prediction and Monitoring of Asthma Crisis Severity and Temporal Proximity
+# AsthmaExpertUltra — Simulation-Based Research Prototype for Asthma Severity and Lead-Time Classification
 
 [![CERIST Research](https://img.shields.io/badge/Research-CERIST%20Algeria-blue.svg)](https://www.cerist.dz)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-EE4C2C.svg?logo=pytorch&logoColor=white)](https://pytorch.org/)
-[![Android PyTorch Lite](https://img.shields.io/badge/Android-PyTorch%20Lite%20(.ptl)-green.svg?logo=android&logoColor=white)](https://pytorch.org/mobile/home/)
-[![Status](https://img.shields.io/badge/Status-Research%20Internship%20Validated-success.svg)]()
+[![Android PyTorch Lite](https://img.shields.io/badge/Research-Synthetic%20Time-Series-blue.svg?logo=android&logoColor=white)](https://pytorch.org/mobile/home/)
+[![Status](https://img.shields.io/badge/Status-Simulation-Based%20Prototype-blue.svg)]()
 [![Code Protection](https://img.shields.io/badge/Code%20Policy-Intellectual%20Property%20Protected-orange.svg)]()
 
 > **Research Center in Scientific and Technical Information (CERIST)**  
 > **Author:** Hani Ghena (M.Sc. AI Candidate @ USTHB · CERIST AI Researcher)  
 > **Key Contributions:** Multimodal physiological signal processing, 4-layer Transformer Encoder with multi-task prediction heads, class-weighted Focal Loss, Dempster–Shafer spirometric safety fusion, and sub-second PyTorch Lite on-device Android deployment.
 
+> **Scope and reproducibility:** this is a simulation-based research prototype, not a clinically validated medical device. All cohort results are based on generated synthetic data; no real patient cohort is evaluated. The public repository does not contain a packaged Android app or a standalone exported PyTorch Lite artifact. The live portfolio lab uses deterministic illustrative formulas rather than loading this trained model. Before publishing additional research code, weights or reports, confirm the relevant CERIST sharing permissions.
+
 ---
 
 ## 📌 Abstract & Clinical Motivation
 Asthma is a chronic respiratory condition affecting hundreds of millions of individuals worldwide, characterised by recurrent and unpredictable exacerbations that can rapidly escalate into life-threatening emergencies. 
 
-Traditional clinical approaches remain strictly **reactive** — detecting crises only after onset. **AsthmaExpertUltra** is an end-to-end anticipatory edge-AI monitoring system that identifies pre-crisis physiological degradation patterns **4 to 8 hours before clinical onset**, jointly forecasting:
+Traditional clinical approaches remain strictly **reactive** — detecting crises only after onset. **AsthmaExpertUltra** is a research prototype exploring joint severity and lead-time classification on generated time-series patterns. The cohort described below is synthetic: these results do not demonstrate that real patients can be predicted 4–8 hours before an asthma crisis and do not establish clinical performance. The notebook evaluates the following simulated tasks:
 1. **Crisis Severity:** 4 discrete clinical tiers (*Stable*, *Mild*, *Moderate*, *Severe*).
 2. **Temporal Proximity (Lead-Time):** 4 time-to-crisis risk bins (*Imminent* $<1$h, *Near-term* $1\text{--}3$h, *Alert* $3\text{--}5$h, *Stable* $>5$h).
 
-The entire model is exported to **PyTorch Lite (`.ptl`)** and operates fully offline on an Android smartphone with sub-second latency, zero cloud dependency, and total medical data privacy.
+The notebook/report describe an intended edge-export path. The current repository contains no packaged Android application or standalone `.ptl` model artifact that a reviewer can load directly, so the claimed on-device latency and offline behavior are not independently verifiable from this checkout.
 
 ---
 
@@ -80,7 +82,7 @@ Output: 4 Severity Classes    Output: 4 Temporal Bins
 
 ---
 
-## 📈 Key Findings & Benchmark Metrics
+## 📈 Reported Metrics on Synthetic Data (Not Clinical Performance)
 
 | Model Architecture | Severity Accuracy | Severity Macro-F1 | Lead-Time Accuracy | Lead-Time Macro-F1 | Android Latency |
 | :--- | :---: | :---: | :---: | :---: | :---: |
@@ -90,7 +92,9 @@ Output: 4 Severity Classes    Output: 4 Temporal Bins
 | Simple RNN Baseline | 59.3% | 0.345 | 85.3% | 0.792 | ~1.1s |
 | PatchTST (SOTA 2023) | 57.7% | 0.340 | 85.0% | 0.788 | ~1.3s |
 
-### Clinical Safety & Ablation Insights:
+### Simulation Diagnostics and Ablation Notes
+
+All metrics in this section are reported from the synthetic-patient experiment described above. They should not be interpreted as real-world clinical sensitivity, lead-time prediction or safety validation.
 1. **Class-Weighted Focal Loss Impact:** Applying $w = [1, 5, 5, 10]$ with $\gamma=2$ escalates Severe class recall from **0.3% to 92.3%**, prioritising life-critical emergency detection.
 2. **Dempster–Shafer Fusion:** Modulates decisions based on real-time spirometric confidence, escalating 47.3% of low-VEMS readings to higher triage categories while de-escalating false alarms in stable patients.
 3. **Multi-Task Synergies:** Jointly optimising severity and lead-time allows the shared 128-dimensional latent representation to capture both the trajectory gradient and intensity of respiratory distress simultaneously.
